@@ -1,0 +1,89 @@
+<!DocType html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="description" content="">
+		<meta name="keywords" content="HTML,JavaScript">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Toast</title>	
+		<style>
+			*{margin:0; padding:0; box-sizing:border-box;text-align:center;}
+			.toast{border:2px outset black;width:500px;border-collapse:collapse;position:relative;position:fixed;bottom:30px;right:20px;}
+			.toast-r{display:none;}
+			.head{display:flex;align-item:baseline;background-color:blue;position:relative;}
+			.head .h2{align-self:flex-start;}
+			.head .time{margin-left:65%;}
+			.head .close{cursor:pointer;padding:0px 5px;;position:absolute;right:0;}
+			.body{align-content:center;justify-content:center;padding:20px;border-top:2px solid black;}
+			
+		</style>
+	
+	</head>
+	
+	<body>
+	<div>
+		<button>Toast</button>
+	</div>
+	<script>
+		
+		var toast=document.createElement("div");
+			toast.classList.add("toast");
+		
+		var head=document.createElement("div");
+		head.classList.add("head");
+			var h2=document.createElement("p");
+			h2.classList.add("h2");
+				h2.innerText="Toast";
+			var time=document.createElement("span");
+			time.classList.add("time");
+			var x=document.createElement("span");
+			x.classList.add("close");
+				x.innerText="X"
+			head.appendChild(h2);
+			head.appendChild(time);
+			head.appendChild(x);
+		var body=document.createElement("div");
+		body.classList.add("body");
+			var para=document.createElement("p");
+			para.classList.add("para");
+			para.innerText="This is your toast message";
+			body.appendChild(para);
+			toast.appendChild(head);
+			toast.appendChild(body);
+		var btn=document.querySelector("button");
+		btn.addEventListener("click",function(){
+			toast.classList.remove("toast-r");
+			document.body.appendChild(toast);
+			var count=1;
+			function minutes(){
+				time.innerText=`${count++} minutes ago`;
+				}
+			time.innerText=`0 minutes ago`;
+			setInterval(minutes,60000);
+		});
+		x.addEventListener("click",function(){
+			toast.classList.add("toast-r");
+		});
+			
+	</script>
+	</body>
+</html>
+	
+		
+		
+			
+
+		
+
+		
+		
+	
+
+	
+	
+	
+
+		
+		
+	
+	
